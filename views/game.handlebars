@@ -1,14 +1,21 @@
 <link rel="stylesheet" type="text/css" href="game.css">
 
-<div>Successfully Authenticated and connected to web server!!</div>
+{{!-- <div>Successfully Authenticated and connected to web server!!</div> --}}
 
 <div class="container">
-    <h2>Activity History</h2>
-    <div class="panel panel-default">
-        <div id="game-update-box"></div>
+
+    <div class="container users1-2">
+        <div class="row">
+            <div class="col-md-2 user-box">
+                <h2>User 1</h2>
+            </div>
+            <div class="col-md-2 ml-auto user-box">
+                <h2>User 2</h2>
+            </div>
+        </div>
     </div>
 
-    <div class="main">
+    <div class="game-table">
         <div class="table">
             <div class="board">
                 <div class="card-small">
@@ -35,16 +42,33 @@
         </div>
     </div>
 
+    <div class="container">
+       <div class="row">
+            <div class="col-md-2 user-box">
+                <h2>User 3</h2>
+            </div>
+            <div class="col-md-2 ml-auto user-box">
+                <h2>User 4</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="container action-buttons">
+        <button type="button" class="btn btn-success" onclick="raise()">Raise</button>
+        <button type="button" class="btn btn-warning" onclick="call()">Call</button>
+        <button type="button" class="btn btn-danger" onclick="fold()">Fold</button>
+        <button type="button" class="btn btn-secondary" onclick="check()">Check</button>
+    </div>
+
+     <h2>Activity History</h2>
+    <div class="panel panel-default">
+        <div id="game-update-box"></div>
+    </div>
+
 </div>
 
 
-<div class="container action-buttons">
-    <button type="button" class="btn btn-success">Raise</button>
-    <button type="button" class="btn btn-warning">Call</button>
-    <button type="button" class="btn btn-danger">Fold</button>
-    <button type="button" class="btn btn-secondary">Check</button>
 
-</div>
 
 <script src="/socket.io/socket.io.js"></script>
 
@@ -84,10 +108,21 @@
         players.forEach(function (player) {
             jQuery('#game-update-box').append('<div class="alert alert-success" role="alert">' + player + ' joined the game</div>');
         });
-
-
-
     }
 
+    function raise() {
+        jQuery('#game-update-box').append('<div class="alert alert-success" role="alert">' + 'Raised Bet</div>');
+    }
 
+    function call() {
+        jQuery('#game-update-box').append('<div class="alert alert-warning" role="alert">' + 'Call Bet</div>');
+    }
+
+    function fold() {
+        jQuery('#game-update-box').append('<div class="alert alert-danger" role="alert">' + 'Fold</div>');
+    }
+
+    function check() {
+        jQuery('#game-update-box').append('<div class="alert alert-secondary" role="alert">' + 'Check</div>');
+    }
 </script>

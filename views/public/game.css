@@ -2,8 +2,18 @@
   text-align: center;
 }
 
+.users1-2 {
+  margin-top: 5em;
+}
+
+.user-box {
+  width: 2px;
+  border: 2px solid black;
+}
+
 .action-buttons {
   margin-top: 5em;
+  margin-bottom: 5em;
 }
 
 .table {
