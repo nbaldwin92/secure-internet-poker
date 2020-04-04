@@ -4,10 +4,8 @@ Icon?
 ._*
 
 # npm
-node_modules
+/node_modules
 package-lock.json
-*.log
-*.gz
 .env
 sessions
 active-players.json

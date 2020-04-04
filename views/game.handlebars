@@ -35,20 +35,29 @@
         </div>
     </div>
 
+</div>
+
+
+<div class="container action-buttons">
+    <button type="button" class="btn btn-success">Raise</button>
+    <button type="button" class="btn btn-warning">Call</button>
+    <button type="button" class="btn btn-danger">Fold</button>
+    <button type="button" class="btn btn-secondary">Check</button>
 
 </div>
 
 <script src="/socket.io/socket.io.js"></script>
 
 <script>
-    var userid = '{{ userid }}';
-    var socket = io.connect();
+    var socket = io.connect({
+        reconnect: false
+
+    });
 
     var activePlayers = [];
 
     socket.once('connect', function (data) {
-        socket.emit('register', sessionStorage.getItem('userid'));
-        sessionStorage.setItem('userid', userid);
+        socket.emit('register');
     });
 
     socket.once('joined', function (data) {
@@ -58,11 +67,17 @@
         updateHistoryBox(activePlayers);
     });
 
+    socket.once('gameupdate', function (data) {
+        console.log(data);
+    })
+
+    socket.once('playercards', function (data) {
+        alert(data);
+    })
+
 
     function updateHistoryBox(activePlayers) {
         activePlayers = activePlayers.toString();
-
-        console.log(activePlayers);
         players = activePlayers.replace(/,\s*$/, "");
         players = players.split(',');
 
