@@ -1,5 +1,6 @@
 # secure-internet-poker
 
+<a href="https://secure-internet-poker.herokuapp.com/">View Demo</a>
 <!-- PROJECT LOGO -->
 <br />
 
